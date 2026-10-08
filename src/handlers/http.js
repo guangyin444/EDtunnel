@@ -252,7 +252,7 @@ export async function handleDefaultPath(url, request) {
 	return new Response("OK", {
 		status: 200,
 		headers: {
-			"Content-Type": "text/plain;charset=utf-8" },
+			"Content-Type": "text/plain;charset=utf-8",
 		},
 	});
 }
