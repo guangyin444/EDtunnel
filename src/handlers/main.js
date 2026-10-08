@@ -190,9 +190,10 @@ export async function handleRequest(request, env, ctx, connect) {
 						status: 200,
 						headers: { "Content-Type": "text/plain;charset=utf-8" },
 					});
-				} else if (url.pathname === `/bestip/${matchingUserID}`) {
-					return fetch(`https://bestip.06151953.xyz/auto?host=${host}&uuid=${matchingUserID}&path=/`, { headers: request.headers });
 				}
+				// else if (url.pathname === `/bestip/${matchingUserID}`) {
+				// 	return fetch(`https://bestip.06151953.xyz/auto?host=${host}&uuid=${matchingUserID}&path=/`, { headers: request.headers });
+				// }
 			}
 			return handleDefaultPath(url, request);
 		} else {

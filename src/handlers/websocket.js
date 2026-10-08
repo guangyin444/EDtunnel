@@ -24,6 +24,7 @@ export async function protocolOverWSHandler(request, config, connect) {
 	const [client, webSocket] = Object.values(webSocketPair);
 
 	webSocket.accept();
+	// webSocket.accept({ allowHalfOpen: true });
 
 	let address = '';
 	let portWithRandomLog = '';

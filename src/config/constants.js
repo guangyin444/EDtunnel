@@ -18,9 +18,9 @@ export const byteToHex = Array.from({ length: 256 }, (_, i) => (i + 0x100).toStr
 /**
  * Base64 encoded strings for protocol configuration
  */
-export const at = 'QA==';
-export const pt = 'dmxlc3M=';
-export const ed = 'RUR0dW5uZWw=';
+export const at = 'QA=='; // '@'
+export const pt = 'dmxlc3M='; // 'vless'
+export const ed = 'RUR0dW5uZWw='; // 'EDtunnel'
 
 /**
  * Trojan protocol constants

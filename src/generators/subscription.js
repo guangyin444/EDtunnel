@@ -55,16 +55,17 @@ export function genSub(userID_path, hostname, proxyIP, trojanPassword = null) {
 
 	const result = userIDArray.flatMap((userID) => {
 		let allUrls = [];
+		// http是没必要的
 		// Generate main HTTP URLs first for all domains (except pages.dev)
-		if (!hostname.includes('pages.dev')) {
-			mainDomains.forEach(domain => {
-				Array.from(HttpPort).forEach((port) => {
-					const urlPart = `${hostname.split('.')[0]}-${domain}-HTTP-${port}`;
-					const mainProtocolHttp = atob(pt) + '://' + userID + atob(at) + domain + ':' + port + commonUrlPartHttp + urlPart;
-					allUrls.push(mainProtocolHttp);
-				});
-			});
-		}
+		// if (!hostname.includes('pages.dev')) {
+		// 	mainDomains.forEach(domain => {
+		// 		Array.from(HttpPort).forEach((port) => {
+		// 			const urlPart = `${hostname.split('.')[0]}-${domain}-HTTP-${port}`;
+		// 			const mainProtocolHttp = atob(pt) + '://' + userID + atob(at) + domain + ':' + port + commonUrlPartHttp + urlPart;
+		// 			allUrls.push(mainProtocolHttp);
+		// 		});
+		// 	});
+		// }
 
 		// Generate main HTTPS URLs for all domains
 		mainDomains.forEach(domain => {
@@ -76,12 +77,12 @@ export function genSub(userID_path, hostname, proxyIP, trojanPassword = null) {
 		});
 
 		// Generate proxy HTTPS URLs
-		proxyIPArray.forEach((proxyAddr) => {
-			const [proxyHost, proxyPort = '443'] = proxyAddr.split(':');
-			const urlPart = `${hostname.split('.')[0]}-${proxyHost}-HTTPS-${proxyPort}`;
-			const secondaryProtocolHttps = atob(pt) + '://' + userID + atob(at) + proxyHost + ':' + proxyPort + commonUrlPartHttps + urlPart + '-' + atob(ed);
-			allUrls.push(secondaryProtocolHttps);
-		});
+		// proxyIPArray.forEach((proxyAddr) => {
+		// 	const [proxyHost, proxyPort = '443'] = proxyAddr.split(':');
+		// 	const urlPart = `${hostname.split('.')[0]}-${proxyHost}-HTTPS-${proxyPort}`;
+		// 	const secondaryProtocolHttps = atob(pt) + '://' + userID + atob(at) + proxyHost + ':' + proxyPort + commonUrlPartHttps + urlPart + '-' + atob(ed);
+		// 	allUrls.push(secondaryProtocolHttps);
+		// });
 
 		return allUrls;
 	});
@@ -113,12 +114,12 @@ function generateTrojanUrls(password, hostname, proxyIPArray) {
 	});
 
 	// Proxy IP Trojan URLs
-	proxyIPArray.forEach((proxyAddr) => {
-		const [proxyHost, proxyPort = '443'] = proxyAddr.split(':');
-		const urlPart = `${hostname.split('.')[0]}-${proxyHost}-Trojan-${proxyPort}`;
-		const trojanUrl = `${atob(trojanPt)}://${encodedPassword}@${proxyHost}:${proxyPort}${commonParams}#${urlPart}`;
-		urls.push(trojanUrl);
-	});
+	// proxyIPArray.forEach((proxyAddr) => {
+	// 	const [proxyHost, proxyPort = '443'] = proxyAddr.split(':');
+	// 	const urlPart = `${hostname.split('.')[0]}-${proxyHost}-Trojan-${proxyPort}`;
+	// 	const trojanUrl = `${atob(trojanPt)}://${encodedPassword}@${proxyHost}:${proxyPort}${commonParams}#${urlPart}`;
+	// 	urls.push(trojanUrl);
+	// });
 
 	return urls;
 }
